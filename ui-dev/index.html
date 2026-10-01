@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>符文战场 · 熟人房联机</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body { font: 14px/1.5 -apple-system, "PingFang SC", system-ui, sans-serif; margin: 0; padding: 16px; background: #f6f5f2; color: #1a1a1a; }
+      @media (prefers-color-scheme: dark) { body { background: #17171a; color: #e8e8ea; } }
+      h1 { font-size: 16px; margin: 0 0 4px; }
+      .sub { color: #888; font-size: 12px; margin-bottom: 12px; }
+      #app { max-width: 960px; margin: 0 auto; }
+      .bar { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; padding: 8px 12px; border-radius: 10px; background: rgba(127,127,127,.08); margin-bottom: 12px; }
+      .bar b { color: #2b6cb0; }
+      .board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
+      .bf { border: 1px solid rgba(127,127,127,.25); border-radius: 10px; padding: 8px; min-height: 90px; }
+      .bf h3 { margin: 0 0 6px; font-size: 12px; color: #888; }
+      .unit { display: inline-block; margin: 2px; padding: 3px 7px; border-radius: 6px; font-size: 12px; border: 1px solid rgba(127,127,127,.3); }
+      .u-p1 { background: rgba(43,108,176,.14); }
+      .u-p2 { background: rgba(197,48,48,.14); }
+      .badge { display:inline-block; margin-left:4px; padding:1px 5px; border-radius:5px; font-size:10px; font-weight:600; }
+      .badge.stun { background:#7c3aed; color:#fff; }
+      .badge.nomove { background:#b45309; color:#fff; }
+      .hand { padding: 8px 12px; border-radius: 10px; background: rgba(127,127,127,.06); margin-bottom: 8px; }
+      .hidden-card { display:inline-block; width:22px; height:30px; margin:2px; border-radius:4px; background: repeating-linear-gradient(45deg,#8886,#8886 4px,#8883 4px,#8883 8px); vertical-align: middle; }
+      .actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+      button { font: inherit; padding: 5px 10px; border-radius: 7px; border: 1px solid #2b6cb0; background: #2b6cb0; color: #fff; cursor: pointer; }
+      button.sec { background: transparent; color: #2b6cb0; }
+      button:hover { opacity: .85; }
+      .win { padding: 12px; border-radius: 10px; background: rgba(56,161,105,.16); color: #276749; font-weight: 600; margin-bottom: 12px; }
+      .log { font-size: 12px; color: #999; margin-top: 10px; white-space: pre-wrap; max-height: 120px; overflow: auto; }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

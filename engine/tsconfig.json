@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022"],
+    "types": ["node"],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
+    "outDir": "dist",
+    "rootDir": "."
+  },
+  // ★1275【检查面补齐】原来只有 ["src","test"](M0.0 地基提交 534e41cc 写下,之后没动过 ——
+  //   那时 data/ 与 scripts/ 还没长成现在这样)。实测:`tsc --listFiles` 里
+  //   **scripts/ 的 298 个 .ts 有 194 个不在程序里**(65%),16 个 interactionMatrix*.run.ts
+  //   **一个都不在** ⇒ ★1272 改那 5 个 runner 时报的「tsc EXIT=0」对它们【不构成验证】。
+  //   data/ 只差 1 个(SFD-059.ts,纯记档文件、没人 import)。加进来的代价实测:
+  //   data 单独加 = **0 错**;data + scripts = 33 错 / 24 文件,其中 25 条在 scripts/probe/。
+  //   ⚠️`probe/` 也要写进来:它只有 1 个文件、今天靠**被 test import** 才进程序 ——
+  //   哪天没人 import 它就整条脱检,而这正是 SFD-059 那种孤儿的成因。第三条闸就是抓这个的。
+  "include": ["src", "test", "data", "scripts", "probe"],
+  // ⚠️【为什么这两个排除掉,而不是修】
+  //   · `scripts/probe/`(109 个文件):历史一次性探针,用完即弃,25 条错全在这里。
+  //     它们**不是生产件**,修它们零收益;但也不删 —— 留档能查当时怎么探的。
+  //     ⇒ 要清理是另一件事,已列进 ★1276 的下一步。
+  //   · `scripts/logdemo.ts`:它 import `../../ui-dev/src/log` 与 `cards`(战报渲染器),
+  //     **天然跨 engine 与 ui-dev 两个 package** ⇒ 在 engine 的 rootDir 下必然报 TS6059,
+  //     那 4 条 ui-dev 的错也全是被它拉进来的。这是 workspace 布局问题,不是这个文件的错。
+  "exclude": ["scripts/probe", "scripts/logdemo.ts"]}

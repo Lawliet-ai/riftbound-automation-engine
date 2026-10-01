@@ -1,0 +1,38 @@
+# 忽略规则
+
+# 依赖
+node_modules/
+**/node_modules/
+
+# 构建产物
+dist/
+**/dist/
+build/
+*.tsbuildinfo
+
+# 官方卡图与本地生成资源
+**/public/cards/
+**/thumb/
+*.png
+*.jpg
+*.jpeg
+*.webp
+
+# 对局录像
+**/replays/
+*.replay
+
+# 本地上游/私有资料
+data/上游/
+上游/
+
+# 环境与凭证
+.env
+.env.*
+*.local
+
+# 本地生成的展示数据（prepare-display-data 默认输出）
+.local/
+
+# 系统
+.DS_Store

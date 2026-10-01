@@ -1,0 +1,18 @@
+{
+  "name": "@riftbound-automation-engine/engine",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "符文战场(Riftbound国服简中)真规则引擎 · 卡无关裁决器",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
